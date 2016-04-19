@@ -1,0 +1,4 @@
+*.idea*
+*.DS_Store*
+gmail-webdriver-tests.iml
+*target*
