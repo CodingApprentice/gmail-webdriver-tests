@@ -1,3 +1,5 @@
+import com.appsenseca.categories.Critical;
+import com.appsenseca.categories.Major;
 import com.appsenseca.pageobjects.EmailHomePage;
 import com.appsenseca.pageobjects.EmailViewPage;
 import com.appsenseca.pageobjects.SignInPage;
@@ -5,6 +7,7 @@ import com.appsenseca.utils.WebUtil;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,12 +18,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Created by SunilM on 19/04/2016.
  */
-public class GmailTests {
+public class GmailTest {
 
     WebDriver driver = new FirefoxDriver();
     WebDriverWait wait;
 
 
+    @Category({Critical.class})
     @Test
     public void gmailLoginShouldBeSuccessful(){
 
@@ -36,6 +40,7 @@ public class GmailTests {
         Assert.assertTrue("Sign In button should be displayed",SignInPage.doesSignInButtonExist(driver));
     }
 
+    @Category({Major.class})
     @Test
     public void gmailSendAndReceiveEmailShouldBeSuccessful(){
 

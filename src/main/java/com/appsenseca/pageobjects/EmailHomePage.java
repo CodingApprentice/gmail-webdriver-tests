@@ -1,5 +1,6 @@
 package com.appsenseca.pageobjects;
 
+import com.appsenseca.utils.WebUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,20 +14,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class EmailHomePage {
 
     WebDriverWait wait;
+    final static int WAIT_TIME_OUT = 30;
 
     public SignInPage SignOut(WebDriver driver) {
 
-        wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[title*='Google Account']")));
+        //wait = new WebDriverWait(driver, 30);
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[title*='Google Account']")));
 
-        WebElement accountLogo = driver.findElement(By.cssSelector("[title*='Google Account']"));
-        accountLogo.click();
+        WebUtil.click(driver,By.cssSelector("[title*='Google Account']"), WAIT_TIME_OUT);
 
-        wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Sign out")));
-        WebElement signOutButton = driver.findElement(By.partialLinkText("Sign out"));
-        signOutButton.click();
+        //wait = new WebDriverWait(driver, 30);
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Sign out")));
 
+        WebUtil.click(driver,By.partialLinkText("Sign out"), WAIT_TIME_OUT);
+
+        wait = new WebDriverWait(driver, WAIT_TIME_OUT);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("signIn")));
 
         return PageFactory.initElements(driver, SignInPage.class);
