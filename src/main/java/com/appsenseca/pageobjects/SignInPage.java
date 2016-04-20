@@ -39,7 +39,7 @@ public class SignInPage {
         return PageFactory.initElements(driver, EmailHomePage.class);
     }
 
-    public static boolean DoesSignInButtonExist(WebDriver driver) {
+    public static boolean doesSignInButtonExist(WebDriver driver) {
 
         return driver.findElement(By.id("signIn")).isDisplayed();
     }
