@@ -6,11 +6,13 @@ import com.appsenseca.pageobjects.SignInPage;
 import com.appsenseca.utils.WebUtil;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,9 +22,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class GmailTest {
 
-    WebDriver driver = new FirefoxDriver();
+    WebDriver driver;
     WebDriverWait wait;
 
+    @Before
+    public void setDriver(){
+
+        System.setProperty("webdriver.chrome.driver", "C:/Moved Stuff/chromedriver_win32/chromedriver.exe");
+        String browserName = System.getenv("browser");
+        if(browserName != null && browserName.equalsIgnoreCase("Chrome")){
+            driver = new ChromeDriver();
+        }else{
+            driver = new FirefoxDriver();
+        }
+    }
 
     @Category({Critical.class})
     @Test
