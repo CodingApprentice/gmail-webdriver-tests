@@ -32,8 +32,8 @@ public class GmailTest {
 
         String browserName = System.getenv("browser");
         if(browserName != null && browserName.equalsIgnoreCase("Chrome")){
-            String chromeDriver = GmailTest.class.getClassLoader().getResource("bin/chromedriver.exe").getPath();
-            System.setProperty("webdriver.chrome.driver", chromeDriver);
+            //String chromeDriver = GmailTest.class.getClassLoader().getResource("bin/chromedriver.exe").getPath();
+            System.setProperty("webdriver.chrome.driver", "C:/Program Files (x86)/Jenkins/workspace/GmailUIAutomationTestsChrome%402/target/classes/bin/chromedriver.exe");
             driver = new ChromeDriver();
         }else{
             driver = new FirefoxDriver();
