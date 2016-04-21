@@ -34,15 +34,14 @@ public class GmailTest {
 
         String browserName = System.getenv("browser");
         if(browserName != null && browserName.equalsIgnoreCase("Chrome")){
-            String chromeDriver = GmailTest.class.getClassLoader().getResource("bin/chromedriver.exe").getPath();
-            String result = null;
+            String encodedchromeDriverPath = GmailTest.class.getClassLoader().getResource("bin/chromedriver.exe").getPath();
+            String decodedchromeDriverPath = null;
             try {
-                result = URLDecoder.decode(chromeDriver, "UTF-8");
+                decodedchromeDriverPath = URLDecoder.decode(encodedchromeDriverPath, "UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-            System.setProperty("webdriver.chrome.driver", result);
-            //System.setProperty("webdriver.chrome.driver", "C:/Program Files (x86)/Jenkins/workspace/GmailUIAutomationTestsChrome/target/classes/bin/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", decodedchromeDriverPath);
             driver = new ChromeDriver();
         }else{
             driver = new FirefoxDriver();
