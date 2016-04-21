@@ -17,6 +17,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.URL;
+
 /**
  * Created by SunilM on 19/04/2016.
  */
@@ -30,8 +32,8 @@ public class GmailTest {
 
         String browserName = System.getenv("browser");
         if(browserName != null && browserName.equalsIgnoreCase("Chrome")){
-            String chromeDriver = GmailTest.class.getClassLoader().getResource("bin/chromedriver.exe").getPath();
-            System.setProperty("webdriver.chrome.driver", chromeDriver);
+            URL chromeDriver = GmailTest.class.getClassLoader().getResource("bin/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", chromeDriver.toString());
             driver = new ChromeDriver();
         }else{
             driver = new FirefoxDriver();
