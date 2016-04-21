@@ -17,7 +17,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLDecoder;
 
 /**
  * Created by SunilM on 19/04/2016.
@@ -32,8 +34,15 @@ public class GmailTest {
 
         String browserName = System.getenv("browser");
         if(browserName != null && browserName.equalsIgnoreCase("Chrome")){
-            //String chromeDriver = GmailTest.class.getClassLoader().getResource("bin/chromedriver.exe").getPath();
-            System.setProperty("webdriver.chrome.driver", "C:/Program Files (x86)/Jenkins/workspace/GmailUIAutomationTestsChrome/target/classes/bin/chromedriver.exe");
+            String chromeDriver = GmailTest.class.getClassLoader().getResource("bin/chromedriver.exe").getPath();
+            String result = null;
+            try {
+                result = URLDecoder.decode(chromeDriver, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            System.setProperty("webdriver.chrome.driver", result);
+            //System.setProperty("webdriver.chrome.driver", "C:/Program Files (x86)/Jenkins/workspace/GmailUIAutomationTestsChrome/target/classes/bin/chromedriver.exe");
             driver = new ChromeDriver();
         }else{
             driver = new FirefoxDriver();
