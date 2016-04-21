@@ -30,7 +30,7 @@ public class GmailTest {
 
         System.setProperty("webdriver.chrome.driver", "C:/Moved Stuff/chromedriver_win32/chromedriver.exe");
         String browserName = System.getenv("browser");
-        if(browserName != null && browserName.equalsIgnoreCase("Chrome")){
+        if(browserName != null && browserName.equalsIgnoreCase("chrome")){
             driver = new ChromeDriver();
         }else{
             driver = new FirefoxDriver();
